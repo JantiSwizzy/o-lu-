@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janti Originall RGB Gallery</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+      animation: bgChange 10s infinite alternate;
+      position: relative;
+    }
+
+    @keyframes bgChange {
+      0% { background: linear-gradient(135deg, #ff004c, #7f00ff); }
+      25% { background: linear-gradient(135deg, #00ffcc, #0066ff); }
+      50% { background: linear-gradient(135deg, #ff9900, #ff0055); }
+      75% { background: linear-gradient(135deg, #39ff14, #00bfff); }
+      100% { background: linear-gradient(135deg, #ff004c, #7f00ff); }
+    }
+
+    .background-text {
+      position: absolute;
+      top: 40%;
+      left: 0;
+      width: 300%;
+      font-size: 7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, red, orange, yellow, lime, cyan, blue, magenta, red);
+      -webkit-background-clip: text;
+      color: transparent;
+      opacity: 0.25;
+      white-space: nowrap;
+      animation: scrollText 20s linear infinite, rgbShift 4s infinite linear;
+      z-index: 0;
+      user-select: none;
+    }
+
+    @keyframes scrollText {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0%); }
+    }
+
+    @keyframes rgbShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    header {
+      z-index: 2;
+      position: relative;
+      padding: 40px 20px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 0 0 20px #fff, 0 0 40px #ff00ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff; }
+      to { text-shadow: 0 0 40px #00ffff, 0 0 60px #ff00ff; }
+    }
+
+    .gallery {
+      z-index: 2;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      width: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+      transition: transform 0.5s, box-shadow 0.5s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card h3 {
+      padding: 15px;
+      font-size: 1.2rem;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+
+    audio {
+      z-index: 2;
+      position: relative;
+      margin-top: 40px;
+      width: 70%;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #fff;
+      outline: none;
+    }
+
+    footer {
+      z-index: 2;
+      position: relative;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-text">JANTI ORIGINALL • JANTI ORIGINALL • JANTI ORIGINALL •</div>
+
+  <header>🌈 Janti Originall RGB Gallery 🌈</header>
+
+  <div class="gallery">
+    <div class="card">
+      <img src="resim/1.jpg" alt="Fotoğraf 1">
+      <h3>Enerji Burada ⚡</h3>
+    </div>
+
+    <div class="card">
+      <img src="resim/2.jpg" alt="Fotoğraf 2">
+      <h3>Stil ve Işık 💥</h3>
+    </div>
+  </div>
+
+  <!-- Müzik: manuel başlatmalı -->
+  <audio controls>
+    <source src="müzik/LVBEL C5 - HAVHAVHAV.mp3" type="audio/mpeg">
+    Tarayıcın ses çalmayı desteklemiyor.
+  </audio>
+
+  <footer>© 2025 Janti Originall | RGB Power 💫</footer>
+
+</body>
+</html>
