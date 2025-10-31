@@ -15,27 +15,20 @@
       text-align: center;
       overflow-x: hidden;
       min-height: 100vh;
-      background: linear-gradient(135deg, #ff004c, #7f00ff);
-      transition: background 0.3s ease;
+      animation: bgChange 10s infinite alternate;
       position: relative;
     }
 
-    header {
-      z-index: 2;
-      position: relative;
-      padding: 40px 20px;
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-shadow: 0 0 20px #fff, 0 0 40px #ff00ff;
-      animation: glow 2s infinite alternate;
+    /* RGB arka plan geçişi */
+    @keyframes bgChange {
+      0% { background: linear-gradient(135deg, #ff004c, #7f00ff); }
+      25% { background: linear-gradient(135deg, #00ffcc, #0066ff); }
+      50% { background: linear-gradient(135deg, #ff9900, #ff0055); }
+      75% { background: linear-gradient(135deg, #39ff14, #00bfff); }
+      100% { background: linear-gradient(135deg, #ff004c, #7f00ff); }
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff; }
-      to { text-shadow: 0 0 40px #00ffff, 0 0 60px #ff00ff; }
-    }
-
-    /* Arka planda kayan yazı */
+    /* Arka planda kayan büyük yazı */
     .background-text {
       position: absolute;
       top: 45%;
@@ -64,6 +57,22 @@
       100% { filter: hue-rotate(360deg); }
     }
 
+    header {
+      z-index: 2;
+      position: relative;
+      padding: 40px 20px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-shadow: 0 0 20px #fff, 0 0 40px #ff00ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff; }
+      to { text-shadow: 0 0 40px #00ffff, 0 0 60px #ff00ff; }
+    }
+
+    /* Galeri kartları */
     .gallery {
       z-index: 2;
       position: relative;
@@ -123,54 +132,31 @@
 </head>
 <body>
 
+  <!-- Arka planda kayan RGB yazı -->
   <div class="background-text">JANTI ORIGINALL • JANTI ORIGINALL • JANTI ORIGINALL •</div>
 
   <header>🌈 Janti Originall RGB Gallery 🌈</header>
 
+  <!-- Sabit iki fotoğraf -->
   <div class="gallery">
     <div class="card">
       <img src="resim/1.jpg" alt="Fotoğraf 1">
       <h3>Enerji Burada ⚡</h3>
     </div>
+
     <div class="card">
       <img src="resim/2.jpg" alt="Fotoğraf 2">
       <h3>Stil ve Işık 💥</h3>
     </div>
   </div>
 
-  <audio id="player" controls>
+  <!-- Müzik: sadece play'e basınca çalar -->
+  <audio controls>
     <source src="muzik/havhav.mp3" type="audio/mpeg">
     Tarayıcın ses çalmayı desteklemiyor.
   </audio>
 
   <footer>© 2025 Janti Originall | RGB Power 💫</footer>
 
-  <script>
-    const audio = document.getElementById('player');
-    const body = document.body;
-    let hue = 0;
-    let colorChangeActive = false;
-
-    // Müzik başlayınca renk değişimi aktif olsun
-    audio.addEventListener('play', () => {
-      colorChangeActive = true;
-      changeColors();
-    });
-
-    // Müzik durunca animasyon da dursun
-    audio.addEventListener('pause', () => {
-      colorChangeActive = false;
-    });
-
-    // Fonksiyon: arka plan rengini döndür
-    function changeColors() {
-      if (!colorChangeActive) return;
-      hue = (hue + 3) % 360;
-      body.style.background = `linear-gradient(135deg, hsl(${hue}, 100%, 50%), hsl(${(hue + 120) % 360}, 100%, 50%))`;
-      setTimeout(changeColors, 100); // her 0.1 saniyede bir değişsin
-    }
-  </script>
-
 </body>
 </html>
-
